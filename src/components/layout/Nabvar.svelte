@@ -1,39 +1,96 @@
 <script>
   import { Router, Link } from "svelte-navigator";
+  import { Icon } from "svelte-fontawesome";
+  import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
+
+  let innerHeight;
+  let innerWidth;
 </script>
 
+<svelte:window bind:innerHeight bind:innerWidth />
 <Router>
   <nav
-    class="navbar navbar-expand-sm bg-dark navbar-dark py-2 px-4 justify-content-between"
+    class="navbar navbar-expand-md py-2 px-4 justify-content-between main-header"
   >
     <Link class="navbar-brand " to="/">
-      <img src="vendor/image/logo/nav_logo.png" alt="nav-logo" />
+      <img src="vendor/image/nav_logo.png" alt="nav-logo" class="nav-logo" />
     </Link>
 
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <Link class="nav-link" to="/dashboard">Dashboard</Link>
-      </li>
-      <li class="nav-item">
-        <Link class="nav-link" to="/login">Login</Link>
-      </li>
-      <li class="nav-item">
-        <Link class="nav-link" to="/register">Sign Up</Link>
-      </li>
-    </ul>
+    <div>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <Icon icon={faBars} class="cl-primary" />
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item header-item">
+            <Link class="nav-link" to="/">
+              <span>Dashboard</span>
+            </Link>
+          </li>
+          <li class="nav-item header-item">
+            <Link class="nav-link" to="/signin">
+              <Icon icon={faUser} class="cl-primary" />
+              <span>Sign in</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 </Router>
 
-<style>
-  .logout-btn {
-    cursor: pointer;
-  }
+<style lang="scss">
+  $primary-color: #a758a0;
 
-  .navbar {
+  .main-header {
     overflow: hidden;
     position: fixed;
     width: 100vw;
     top: 0;
-    z-index: 1;
+    z-index: 10;
+    // background-image: linear-gradient(
+    //   160deg,
+    //   rgba(237, 215, 120, 0.7),
+    //   rgba(224, 189, 31, 0.7)
+    // );
+    background-color: rgba(19, 181, 236, 0.3);
+    box-shadow: 0 4px 8px 0 rgba(11, 109, 142, 0.2),
+      0 6px 18px 0 rgba(11, 109, 142, 0.19);
+  }
+
+  .nav-logo {
+    height: 3rem;
+    @media (max-width: 576px) {
+      height: 2.2rem;
+    }
+  }
+
+  .nav-item .nav-link span {
+    color: $primary-color;
+  }
+
+  .nav-item:hover .nav-link span {
+    color: $primary-color;
+  }
+
+  .header-item {
+    margin: 0 0.3rem;
+    height: 2.5rem;
+    border-bottom: 0 solid $primary-color;
+    transition: border-bottom 0.2s ease-in-out;
+    -webkit-transition: border-bottom 0.2s ease-in-out;
+  }
+
+  .header-item:hover {
+    border-bottom: 1px solid $primary-color;
   }
 </style>

@@ -6,6 +6,7 @@
 	import PrivateRoute from "./components/privateRoute/PrivateRoute.svelte";
 
 	import Nabvar from "./components/layout/Nabvar.svelte";
+	import Dashboard from "./pages/Dashboard.svelte";
 
 	// onMount(() => {
 	// 	if (localStorage.token) {
@@ -16,20 +17,19 @@
 	// 		if (!localStorage.token) logout();
 	// 	});
 	// });
-	// export let url = "";
+	export let url = "";
 </script>
 
 <main class="bg-light">
 	<Notifications>
 		<Nabvar />
-		<div class="container">
-			<h1>Hello</h1>
-			<!-- <Router {url}>
-				<Route path="/" component={Landing} />
-				<PrivateRoute path="/dashboard">
+		<div class="container pages">
+			<Router {url}>
+				<Route path="/" component={Dashboard} />
+				<!-- <PrivateRoute path="/dashboard">
 					<Dashboard />
-				</PrivateRoute>
-			</Router> -->
+				</PrivateRoute> -->
+			</Router>
 		</div>
 	</Notifications>
 </main>
@@ -40,5 +40,13 @@
 		padding: 0;
 		margin: 0 auto;
 		min-height: 100vh;
+		background-image: url("./image/dashboard_bg.png");
+		background-position: right;
+		background-repeat: no-repeat;
+		background-size: cover;
+	}
+
+	.pages {
+		padding-top: 100px;
 	}
 </style>

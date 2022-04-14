@@ -1,35 +1,62 @@
-html, body {
+html,
+body {
 	position: relative;
 	width: 100%;
 	height: 100%;
 }
 
 body {
-	color: #333;
+	color: #111;
 	margin: 0;
-	padding: 0!important;
+	padding: 0 !important;
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 
-a {
-	color: rgb(0,100,200);
+/* Custom scrollbar */
+/* width */
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #b471ae;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #964f90;
+}
+
+/* a {
+	color: rgb(0, 100, 200);
 	text-decoration: none;
-}
+} */
 
-a:hover {
+/* a:hover {
 	text-decoration: underline;
-}
+} */
 
-a:visited {
-	color: rgb(0,80,160);
-}
+/* a:visited {
+	color: rgb(0, 80, 160);
+} */
 
-label {
+/* label {
 	display: block;
-}
+} */
 
-input, button, select, textarea {
+/* input,
+button,
+select,
+textarea {
 	font-family: inherit;
 	font-size: inherit;
 	-webkit-padding: 0.4em 0;
@@ -60,8 +87,16 @@ button:not(:disabled):active {
 
 button:focus {
 	border-color: #666;
-}
+} */
 
 .notification {
-	top:50px;
+	top: 50px;
+}
+
+.cl-primary {
+	color: #a758a0;
+}
+
+*:focus {
+	outline-color: #a758a0;
 }
