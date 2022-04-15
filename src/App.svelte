@@ -7,6 +7,8 @@
 
 	import Nabvar from "./components/layout/Nabvar.svelte";
 	import Dashboard from "./pages/Dashboard.svelte";
+	import Signin from "./pages/auth/Signin.svelte";
+	import Signup from "./pages/auth/Signup.svelte";
 
 	// onMount(() => {
 	// 	if (localStorage.token) {
@@ -26,6 +28,9 @@
 		<div class="container pages">
 			<Router {url}>
 				<Route path="/" component={Dashboard} />
+
+				<Route path="/signin" component={Signin} />
+				<Route path="/signup" component={Signup} />
 				<!-- <PrivateRoute path="/dashboard">
 					<Dashboard />
 				</PrivateRoute> -->
@@ -48,5 +53,7 @@
 
 	.pages {
 		padding-top: 100px;
+		padding-bottom: 1.5rem;
+		min-height: 100vh;
 	}
 </style>

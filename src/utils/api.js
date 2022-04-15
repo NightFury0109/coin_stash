@@ -15,7 +15,10 @@ const axiosAPI = axios.create({
 // Implement a method to execute all the request from here
 const apiRequest = async (method, url, request) => {
   try {
-    const headers = { Authorization: localStorage.getItem("token") };
+    const headers = {
+      "X-Token": localStorage.getItem("token"),
+      "X-Nonce": 1
+    };
     const response = await axiosAPI({ method, url, headers, data: request });
     return response.data;
   } catch (error) {

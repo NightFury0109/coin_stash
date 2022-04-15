@@ -1,3 +1,6 @@
 import { readable, writable } from 'svelte/store';
 
-export const apiURL = readable("http://localhost:7000/api");
+export const apiURL = readable("https://api.coinstash.co.za");
+
+export const isAuth = writable(false);
+export const errors = writable({});

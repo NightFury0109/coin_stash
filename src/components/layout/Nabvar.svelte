@@ -62,7 +62,7 @@
     //   rgba(237, 215, 120, 0.7),
     //   rgba(224, 189, 31, 0.7)
     // );
-    background-color: rgba(19, 181, 236, 0.3);
+    background-color: rgba(19, 181, 236, 0.6);
     box-shadow: 0 4px 8px 0 rgba(11, 109, 142, 0.2),
       0 6px 18px 0 rgba(11, 109, 142, 0.19);
   }
