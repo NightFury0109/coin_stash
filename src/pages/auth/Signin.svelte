@@ -15,6 +15,7 @@
   });
 
   const navigateSingup = () => {
+    errors.set({});
     navigate("/signup", { replace: true });
   };
 

@@ -3,8 +3,19 @@
   import { Icon } from "svelte-fontawesome";
   import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
 
+  import { isAuth, errors } from "../../store";
+  import { logout } from "../../apis/auth";
+
   let innerHeight;
   let innerWidth;
+
+  const eraseErrMessage = () => {
+    errors.set({});
+  };
+
+  const signout = async () => {
+    await logout();
+  };
 </script>
 
 <svelte:window bind:innerHeight bind:innerWidth />
@@ -36,12 +47,21 @@
               <span>Dashboard</span>
             </Link>
           </li>
-          <li class="nav-item header-item">
-            <Link class="nav-link" to="/signin">
-              <Icon icon={faUser} class="cl-primary" />
-              <span>Sign in</span>
-            </Link>
-          </li>
+          {#if $isAuth}
+            <li class="nav-item header-item" on:click={signout}>
+              <Link class="nav-link" to="/signin">
+                <Icon icon={faUser} class="cl-primary" />
+                <span>Sign Out</span>
+              </Link>
+            </li>
+          {:else}
+            <li class="nav-item header-item" on:click={eraseErrMessage}>
+              <Link class="nav-link" to="/signin">
+                <Icon icon={faUser} class="cl-primary" />
+                <span>Sign in</span>
+              </Link>
+            </li>
+          {/if}
         </ul>
       </div>
     </div>

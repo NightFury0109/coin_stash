@@ -35,6 +35,7 @@ export const login = async userData => {
     console.log(res);
     if (res.result === 0) {
       errors.set({});
+      isAuth.set(true);
       localStorage.setItem("token", res.token);
       navigate("/", { replace: true });
     } else {
@@ -53,3 +54,15 @@ export const login = async userData => {
     console.log(error)
   }
 };
+
+// Logout
+export const logout = async () => {
+  try {
+    const res = await api.delete('/session');
+    console.log(res);
+    localStorage.removeItem("token");
+    isAuth.set(false);
+  } catch (error) {
+    console.log(error);
+  }
+}

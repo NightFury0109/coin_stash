@@ -12,7 +12,7 @@
   // });
 
   $: if (!localStorage.token) {
-    navigate("/login", {
+    navigate("/signin", {
       state: { from: $location.pathname },
       replace: true,
     });

@@ -3,6 +3,9 @@
 	import { onMount } from "svelte";
 	import Notifications from "svelte-notifications";
 
+	import { isAuth } from "./store";
+	import { logout } from "./apis/auth";
+
 	import PrivateRoute from "./components/privateRoute/PrivateRoute.svelte";
 
 	import Nabvar from "./components/layout/Nabvar.svelte";
@@ -10,15 +13,15 @@
 	import Signin from "./pages/auth/Signin.svelte";
 	import Signup from "./pages/auth/Signup.svelte";
 
-	// onMount(() => {
-	// 	if (localStorage.token) {
-	// 		loadUser();
-	// 	}
+	onMount(() => {
+		if (localStorage.token) {
+			isAuth.set(true);
+		}
 
-	// 	window.addEventListener("storage", () => {
-	// 		if (!localStorage.token) logout();
-	// 	});
-	// });
+		window.addEventListener("storage", () => {
+			if (!localStorage.token) logout();
+		});
+	});
 	export let url = "";
 </script>
 
@@ -27,13 +30,11 @@
 		<Nabvar />
 		<div class="container pages">
 			<Router {url}>
-				<Route path="/" component={Dashboard} />
-
 				<Route path="/signin" component={Signin} />
 				<Route path="/signup" component={Signup} />
-				<!-- <PrivateRoute path="/dashboard">
+				<PrivateRoute path="/">
 					<Dashboard />
-				</PrivateRoute> -->
+				</PrivateRoute>
 			</Router>
 		</div>
 	</Notifications>
