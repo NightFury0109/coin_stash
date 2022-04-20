@@ -19,7 +19,7 @@
 </script>
 
 <svelte:window bind:innerHeight bind:innerWidth />
-<Router>
+<Router primary={false}>
   <nav
     class="navbar navbar-expand-md py-2 px-4 justify-content-between main-header"
   >
@@ -45,6 +45,16 @@
           <li class="nav-item header-item">
             <Link class="nav-link" to="/">
               <span>Dashboard</span>
+            </Link>
+          </li>
+          <li class="nav-item header-item">
+            <Link class="nav-link" to="/history">
+              <span>History</span>
+            </Link>
+          </li>
+          <li class="nav-item header-item">
+            <Link class="nav-link" to="/profile">
+              <span>Profile</span>
             </Link>
           </li>
           {#if $isAuth}
@@ -89,7 +99,7 @@
 
   .nav-logo {
     height: 3rem;
-    @media (max-width: 576px) {
+    @media screen and (max-width: 576px) {
       height: 2.2rem;
     }
   }

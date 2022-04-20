@@ -8,8 +8,8 @@
   } from "@fortawesome/free-solid-svg-icons";
   import Switch from "svelte-switch";
 
-  import WalletItem from "../components/Dashboard/WalletItem.svelte";
-  import TransactionItem from "../components/Dashboard/TransactionItem.svelte";
+  import WalletItem from "../components/dashboard/WalletItem.svelte";
+  import TransactionItem from "../components/dashboard/TransactionItem.svelte";
   import LTVRatio from "../components/LTVRatio.svelte";
 
   let hideZeroBal = false;

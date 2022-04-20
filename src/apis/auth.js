@@ -7,7 +7,7 @@ import { isAuth, errors } from '../store';
 export const createAccount = async newUser => {
   try {
     const res = await api.post('/user', newUser);
-    console.log(res);
+
     if (res.result === 0) {
       errors.set({});
       navigate("/signin", { replace: true });
@@ -32,7 +32,7 @@ export const createAccount = async newUser => {
 export const login = async userData => {
   try {
     const res = await api.post('/session', userData);
-    console.log(res);
+    // console.log(res)
     if (res.result === 0) {
       errors.set({});
       isAuth.set(true);
@@ -58,8 +58,8 @@ export const login = async userData => {
 // Logout
 export const logout = async () => {
   try {
-    const res = await api.delete('/session');
-    console.log(res);
+    await api.delete('/session');
+
     localStorage.removeItem("token");
     isAuth.set(false);
   } catch (error) {

@@ -12,6 +12,10 @@
 	import Dashboard from "./pages/Dashboard.svelte";
 	import Signin from "./pages/auth/Signin.svelte";
 	import Signup from "./pages/auth/Signup.svelte";
+	import Profile from "./pages/Profile.svelte";
+	import History from "./pages/History.svelte";
+
+	export let url = "";
 
 	onMount(() => {
 		if (localStorage.token) {
@@ -22,7 +26,6 @@
 			if (!localStorage.token) logout();
 		});
 	});
-	export let url = "";
 </script>
 
 <main class="bg-light">
@@ -30,10 +33,20 @@
 		<Nabvar />
 		<div class="container pages">
 			<Router {url}>
-				<Route path="/signin" component={Signin} />
-				<Route path="/signup" component={Signup} />
+				<Route path="/signin">
+					<Signin />
+				</Route>
+				<Route path="/signup">
+					<Signup />
+				</Route>
 				<PrivateRoute path="/">
 					<Dashboard />
+				</PrivateRoute>
+				<PrivateRoute path="/profile">
+					<Profile />
+				</PrivateRoute>
+				<PrivateRoute path="/history">
+					<History />
 				</PrivateRoute>
 			</Router>
 		</div>
