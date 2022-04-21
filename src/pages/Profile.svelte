@@ -12,6 +12,7 @@
 
   onMount(() => {
     navigate("#account");
+    profilePage.set("Account");
   });
 </script>
 

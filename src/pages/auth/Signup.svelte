@@ -4,9 +4,12 @@
   import { createAccount } from "../../apis/auth";
   import { errors } from "../../store";
 
+  import signupValidation from "../../utils/validation/signupValidation";
+
   let userData = {
     email: "",
     password: "",
+    password2: "",
   };
 
   let errMessages;
@@ -21,7 +24,10 @@
   };
 
   const signup = async () => {
-    await createAccount(userData);
+    const { errorMsgs, isValid } = await signupValidation(userData);
+
+    if (!isValid) errors.set(errorMsgs);
+    else await createAccount(userData);
   };
 </script>
 
@@ -59,6 +65,21 @@
       </div>
       {#if errMessages.password}
         <div class="text-danger">{errMessages.password}</div>
+      {/if}
+      <div class="form-group mt-3">
+        <label for="password2" class="cl-primary">Confirm Password</label>
+        <input
+          type="password"
+          class={`form-control mt-2 primary-input ${
+            errMessages.password2 ? "is-invalid" : null
+          }`}
+          name="password2"
+          id="password2"
+          bind:value={userData.password2}
+        />
+      </div>
+      {#if errMessages.password2}
+        <div class="text-danger">{errMessages.password2}</div>
       {/if}
       <button type="submit" class="btn-main mt-4 full-width"
         >Create Account</button

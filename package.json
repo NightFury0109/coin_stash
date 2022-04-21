@@ -27,7 +27,8 @@
     "svelte-fontawesome": "^0.0.3",
     "svelte-navigator": "^3.1.5",
     "svelte-notifications": "^0.9.91",
-    "svelte-switch": "^0.0.5"
+    "svelte-switch": "^0.0.5",
+    "validator": "^13.7.0"
   },
   "proxy": "http://localhost:7000"
 }

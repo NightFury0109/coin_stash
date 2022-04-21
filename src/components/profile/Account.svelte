@@ -2,16 +2,13 @@
   import { fly } from "svelte/transition";
 
   let userData = {
+    email: "",
     firstName: "",
     lastName: "",
-    areaCode: "",
+    known_as: "",
+    id_num: "",
+    address: "",
     phone: "",
-    street: "",
-    street2: "",
-    city: "",
-    state: "",
-    zipcode: "",
-    country: "",
   };
 
   const saveUserData = () => {};
@@ -32,8 +29,7 @@
           class={`form-control mt-2 primary-input`}
           name="email"
           id="email"
-          value="danildevpay@gmail.com"
-          readonly
+          bind:value={userData.email}
         />
       </div>
 
@@ -63,75 +59,41 @@
         </div>
       </div>
 
+      <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6 mt-3">
+            <label for="known_as" class="cl-primary">Known As</label>
+            <input
+              type="text"
+              class={`form-control mt-2 primary-input`}
+              name="known_as"
+              id="known_as"
+              bind:value={userData.known_as}
+            />
+          </div>
+
+          <div class="col-sm-6 mt-3">
+            <label for="id_num" class="cl-primary">ID Card Number</label>
+            <input
+              type="text"
+              class={`form-control mt-2 primary-input`}
+              name="id_num"
+              id="id_num"
+              bind:value={userData.id_num}
+            />
+          </div>
+        </div>
+      </div>
+
       <div class="form-group mt-3">
         <label for="address" class="cl-primary">Address</label>
-        <div>
-          <input
-            type="text"
-            class={`form-control mt-2 primary-input`}
-            name="street"
-            id="street"
-            bind:value={userData.street}
-          />
-          <small class="text-black-50">Street Address</small>
-        </div>
-
-        <div>
-          <input
-            type="text"
-            class={`form-control mt-2 primary-input`}
-            name="street2"
-            id="street2"
-            bind:value={userData.street2}
-          />
-          <small class="text-black-50">Street Address Line 2</small>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <input
-              type="text"
-              class={`form-control mt-2 primary-input`}
-              name="city"
-              id="city"
-              bind:value={userData.city}
-            />
-            <small class="text-black-50">City</small>
-          </div>
-          <div class="col-sm-6">
-            <input
-              type="text"
-              class={`form-control mt-2 primary-input`}
-              name="state"
-              id="state"
-              bind:value={userData.state}
-            />
-            <small class="text-black-50">State / Province</small>
-          </div>
-        </div>
-
-        <div class="row">
-          <div class="col-sm-6">
-            <input
-              type="text"
-              class={`form-control mt-2 primary-input`}
-              name="zipcode"
-              id="zipcode"
-              bind:value={userData.zipcode}
-            />
-            <small class="text-black-50">Postal / Zip Code</small>
-          </div>
-          <div class="col-sm-6">
-            <input
-              type="text"
-              class={`form-control mt-2 primary-input`}
-              name="country"
-              id="country"
-              bind:value={userData.country}
-            />
-            <small class="text-black-50">Country</small>
-          </div>
-        </div>
+        <input
+          type="text"
+          class={`form-control mt-2 primary-input`}
+          name="address"
+          id="address"
+          bind:value={userData.address}
+        />
       </div>
 
       <div class="form-group mt-3">
