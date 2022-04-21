@@ -22,23 +22,11 @@
   <SideMenuItem title="Password" icon={faUnlock} {switchPages} />
   <SideMenuItem title="Setting" icon={faSliders} {switchPages} />
   <SideMenuItem title="Security" icon={faFingerprint} {switchPages} />
-  <!-- <Link to="account">
-    <SideMenuItem title="Account" icon={faUser} />
-  </Link>
-  <Link to="change_password">
-    <SideMenuItem title="Password" icon={faUnlock} />
-  </Link>
-  <Link to="setting">
-    <SideMenuItem title="Setting" icon={faSliders} />
-  </Link>
-  <Link to="security">
-    <SideMenuItem title="Security" icon={faFingerprint} />
-  </Link> -->
 </div>
 
 <style lang="scss">
   .sidebar {
-    position: absolute;
+    position: fixed;
     left: 0;
   }
 

@@ -17,30 +17,23 @@
 
 <SideMenu />
 
-{#if $profilePage === "Account"}
-  <Account />
-{/if}
-{#if $profilePage === "Password"}
-  <ChangePassword />
-{/if}
-{#if $profilePage === "Setting"}
-  <Setting />
-{/if}
-{#if $profilePage === "Security"}
-  <Security />
-{/if}
+<div class="left-padding">
+  {#if $profilePage === "Account"}
+    <Account />
+  {/if}
+  {#if $profilePage === "Password"}
+    <ChangePassword />
+  {/if}
+  {#if $profilePage === "Setting"}
+    <Setting />
+  {/if}
+  {#if $profilePage === "Security"}
+    <Security />
+  {/if}
+</div>
 
-<!-- <PrivateRoute path="account">
-  <Account />
-</PrivateRoute>
-<PrivateRoute path="change_password">
-  <ChangePassword />
-</PrivateRoute>
-<PrivateRoute path="setting">
-  <Setting />
-</PrivateRoute>
-<PrivateRoute path="security">
-  <Security />
-</PrivateRoute> -->
 <style lang="scss">
+  .left-padding {
+    padding-left: 2rem;
+  }
 </style>
