@@ -5,6 +5,7 @@
 
 	import { isAuth } from "./store";
 	import { logout, getUserData } from "./apis/auth";
+	import { getCursList, getCurTypes } from "./apis/finance";
 
 	import PrivateRoute from "./components/privateRoute/PrivateRoute.svelte";
 
@@ -17,16 +18,19 @@
 
 	export let url = "";
 
-	onMount(() => {
+	onMount(async () => {
+		await getCursList();
+		await getCurTypes();
+
 		if (localStorage.token) {
 			isAuth.set(true);
-			getUserData();
+			await getUserData();
 		}
 
-		window.addEventListener("storage", () => {
+		window.addEventListener("storage", async () => {
 			if (!localStorage.token) {
 				isAuth.set(false);
-				logout();
+				await logout();
 			}
 		});
 	});

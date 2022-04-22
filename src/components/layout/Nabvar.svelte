@@ -12,7 +12,6 @@
   import { isAuth, errors } from "../../store";
   import { logout } from "../../apis/auth";
 
-  let innerHeight;
   let innerWidth;
 
   const eraseErrMessage = () => {
@@ -26,10 +25,10 @@
   };
 </script>
 
-<svelte:window bind:innerHeight bind:innerWidth />
+<svelte:window bind:innerWidth />
 <Router primary={false}>
   <nav
-    class="navbar navbar-expand-md py-2 px-4 justify-content-between main-header"
+    class="navbar navbar-expand-sm py-2 px-4 justify-content-between main-header"
   >
     <Link class="navbar-brand " to="/">
       <img src="vendor/image/nav_logo.png" alt="nav-logo" class="nav-logo" />
@@ -50,56 +49,86 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item header-item" on:click={eraseErrMessage}>
+          <li
+            class="nav-item header-item"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            on:click={eraseErrMessage}
+          >
             <Link class="nav-link" to="/">
               <span>Dashboard</span>
             </Link>
           </li>
-          <li class="nav-item header-item" on:click={eraseErrMessage}>
+          <li
+            class="nav-item header-item"
+            data-bs-toggle="collapse"
+            data-bs-target=".navbar-collapse.show"
+            on:click={eraseErrMessage}
+          >
             <Link class="nav-link" to="/history">
               <span>History</span>
             </Link>
           </li>
-          <!-- <li class="nav-item header-item" on:click={eraseErrMessage}>
-            <Link class="nav-link" to="/profile">
-              <span>Profile</span>
-            </Link>
-          </li> -->
-          {#if $isAuth}
-            <!-- <li class="nav-item header-item" on:click={signout}>
-              <Link class="nav-link" to="/signin">
-                <Icon icon={faUser} class="cl-primary" />
-                <span>Sign Out</span>
-              </Link>
-            </li> -->
-            <div class="btn-group">
-              <li
-                class="nav-item header-item dropdown-toggle"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <div class="nav-link">
-                  <Icon icon={faUser} class="cl-primary" />
-                </div>
-              </li>
 
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li on:click={eraseErrMessage}>
-                  <Link class="dropdown-item cl-primary" to="/profile">
-                    <Icon icon={faUserTie} class="cl-primary" />
-                    <span>Profile</span>
-                  </Link>
+          {#if $isAuth}
+            {#if innerWidth > 576}
+              <div class="btn-group">
+                <li
+                  class="nav-item header-item dropdown-toggle"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <div class="nav-link">
+                    <Icon icon={faUser} class="cl-primary" />
+                  </div>
                 </li>
-                <li on:click={signout}>
-                  <Link class="dropdown-item cl-primary" to="/signin">
-                    <Icon icon={faSignOutAlt} class="cl-primary" />
-                    <span>Sign Out</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
+
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li on:click={eraseErrMessage}>
+                    <Link class="dropdown-item cl-primary" to="/profile">
+                      <Icon icon={faUserTie} class="cl-primary" />
+                      <span>Profile</span>
+                    </Link>
+                  </li>
+                  <li on:click={signout}>
+                    <Link class="dropdown-item cl-primary" to="/signin">
+                      <Icon icon={faSignOutAlt} class="cl-primary" />
+                      <span>Sign Out</span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+            {:else}
+              <li
+                class="nav-item header-item"
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+                on:click={eraseErrMessage}
+              >
+                <Link class="nav-link" to="/profile">
+                  <Icon icon={faUserTie} class="cl-primary" />
+                  <span>Profile</span>
+                </Link>
+              </li>
+              <li
+                class="nav-item header-item"
+                data-bs-toggle="collapse"
+                data-bs-target=".navbar-collapse.show"
+                on:click={signout}
+              >
+                <Link class="nav-link" to="/signin">
+                  <Icon icon={faSignOutAlt} class="cl-primary" />
+                  <span>Sign Out</span>
+                </Link>
+              </li>
+            {/if}
           {:else}
-            <li class="nav-item header-item" on:click={eraseErrMessage}>
+            <li
+              class="nav-item header-item"
+              data-bs-toggle="collapse"
+              data-bs-target=".navbar-collapse.show"
+              on:click={eraseErrMessage}
+            >
               <Link class="nav-link" to="/signin">
                 <Icon icon={faSignInAlt} class="cl-primary" />
                 <span>Sign in</span>
@@ -160,5 +189,9 @@
 
   .dropdown-menu {
     min-width: 9rem;
+  }
+
+  .navbar-toggler {
+    color: transparent;
   }
 </style>
