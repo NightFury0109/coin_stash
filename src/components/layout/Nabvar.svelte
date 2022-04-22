@@ -1,7 +1,13 @@
 <script>
   import { Router, Link } from "svelte-navigator";
   import { Icon } from "svelte-fontawesome";
-  import { faBars, faUser } from "@fortawesome/free-solid-svg-icons";
+  import {
+    faBars,
+    faUser,
+    faSignInAlt,
+    faUserTie,
+    faSignOutAlt,
+  } from "@fortawesome/free-solid-svg-icons";
 
   import { isAuth, errors } from "../../store";
   import { logout } from "../../apis/auth";
@@ -14,6 +20,8 @@
   };
 
   const signout = async () => {
+    isAuth.set(false);
+    errors.set({});
     await logout();
   };
 </script>
@@ -42,32 +50,58 @@
 
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
-          <li class="nav-item header-item">
+          <li class="nav-item header-item" on:click={eraseErrMessage}>
             <Link class="nav-link" to="/">
               <span>Dashboard</span>
             </Link>
           </li>
-          <li class="nav-item header-item">
+          <li class="nav-item header-item" on:click={eraseErrMessage}>
             <Link class="nav-link" to="/history">
               <span>History</span>
             </Link>
           </li>
-          <li class="nav-item header-item">
+          <!-- <li class="nav-item header-item" on:click={eraseErrMessage}>
             <Link class="nav-link" to="/profile">
               <span>Profile</span>
             </Link>
-          </li>
+          </li> -->
           {#if $isAuth}
-            <li class="nav-item header-item" on:click={signout}>
+            <!-- <li class="nav-item header-item" on:click={signout}>
               <Link class="nav-link" to="/signin">
                 <Icon icon={faUser} class="cl-primary" />
                 <span>Sign Out</span>
               </Link>
-            </li>
+            </li> -->
+            <div class="btn-group">
+              <li
+                class="nav-item header-item dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <div class="nav-link">
+                  <Icon icon={faUser} class="cl-primary" />
+                </div>
+              </li>
+
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li on:click={eraseErrMessage}>
+                  <Link class="dropdown-item cl-primary" to="/profile">
+                    <Icon icon={faUserTie} class="cl-primary" />
+                    <span>Profile</span>
+                  </Link>
+                </li>
+                <li on:click={signout}>
+                  <Link class="dropdown-item cl-primary" to="/signin">
+                    <Icon icon={faSignOutAlt} class="cl-primary" />
+                    <span>Sign Out</span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
           {:else}
             <li class="nav-item header-item" on:click={eraseErrMessage}>
               <Link class="nav-link" to="/signin">
-                <Icon icon={faUser} class="cl-primary" />
+                <Icon icon={faSignInAlt} class="cl-primary" />
                 <span>Sign in</span>
               </Link>
             </li>
@@ -82,16 +116,11 @@
   $primary-color: #a758a0;
 
   .main-header {
-    overflow: hidden;
+    // overflow: hidden;
     position: fixed;
     width: 100vw;
     top: 0;
     z-index: 10;
-    // background-image: linear-gradient(
-    //   160deg,
-    //   rgba(237, 215, 120, 0.7),
-    //   rgba(224, 189, 31, 0.7)
-    // );
     background-color: rgba(19, 181, 236, 0.6);
     box-shadow: 0 4px 8px 0 rgba(11, 109, 142, 0.2),
       0 6px 18px 0 rgba(11, 109, 142, 0.19);
@@ -113,6 +142,7 @@
   }
 
   .header-item {
+    cursor: pointer;
     margin: 0 0.3rem;
     height: 2.5rem;
     border-bottom: 0 solid $primary-color;
@@ -122,5 +152,13 @@
 
   .header-item:hover {
     border-bottom: 1px solid $primary-color;
+  }
+
+  .dropdown-toggle::after {
+    content: none;
+  }
+
+  .dropdown-menu {
+    min-width: 9rem;
   }
 </style>

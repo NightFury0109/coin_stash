@@ -40,10 +40,10 @@
           id="email"
           bind:value={userData.email}
         />
+        {#if errMessages.email}
+          <div class="text-danger">{errMessages.email}</div>
+        {/if}
       </div>
-      {#if errMessages.email}
-        <div class="text-danger">{errMessages.email}</div>
-      {/if}
 
       <div class="form-group mt-3">
         <label for="password" class="cl-primary">Password</label>
@@ -56,10 +56,11 @@
           id="password"
           bind:value={userData.password}
         />
+        {#if errMessages.password}
+          <div class="text-danger">{errMessages.password}</div>
+        {/if}
       </div>
-      {#if errMessages.password}
-        <div class="text-danger">{errMessages.password}</div>
-      {/if}
+
       <div class="mt-1 text-end cl-primary auth-link mb-0">
         Forgot password?
       </div>

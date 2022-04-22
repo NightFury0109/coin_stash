@@ -4,7 +4,7 @@
 	import Notifications from "svelte-notifications";
 
 	import { isAuth } from "./store";
-	import { logout } from "./apis/auth";
+	import { logout, getUserData } from "./apis/auth";
 
 	import PrivateRoute from "./components/privateRoute/PrivateRoute.svelte";
 
@@ -20,10 +20,14 @@
 	onMount(() => {
 		if (localStorage.token) {
 			isAuth.set(true);
+			getUserData();
 		}
 
 		window.addEventListener("storage", () => {
-			if (!localStorage.token) logout();
+			if (!localStorage.token) {
+				isAuth.set(false);
+				logout();
+			}
 		});
 	});
 </script>

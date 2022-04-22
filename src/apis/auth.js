@@ -1,7 +1,22 @@
 import { navigate } from 'svelte-navigator';
 
 import api from '../utils/api';
-import { isAuth, errors } from '../store';
+import { isAuth, errors, userInfo } from '../store';
+
+// Get User
+export const getUserData = async () => {
+  try {
+    const res = await api.get('/user');
+
+    if (res.result === 0) {
+      userInfo.set(res.data);
+    } else {
+      console.log(res);
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
 
 // Register User
 export const createAccount = async newUser => {

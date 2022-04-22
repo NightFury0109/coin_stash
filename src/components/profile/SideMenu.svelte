@@ -1,6 +1,6 @@
 <script>
   import {
-    faUser,
+    faUserEdit,
     faFingerprint,
     faSliders,
     faUnlock,
@@ -9,16 +9,17 @@
   import { fly } from "svelte/transition";
 
   import SideMenuItem from "./SideMenuItem.svelte";
-  import { profilePage } from "../../store";
+  import { profilePage, errors } from "../../store";
 
   const switchPages = (title) => {
     profilePage.set(title);
+    errors.set({});
     navigate(`#${title.toLowerCase()}`);
   };
 </script>
 
 <div class="sidebar" transition:fly={{ duration: 500, x: -300 }}>
-  <SideMenuItem title="Account" icon={faUser} {switchPages} />
+  <SideMenuItem title="Account" icon={faUserEdit} {switchPages} />
   <SideMenuItem title="Password" icon={faUnlock} {switchPages} />
   <SideMenuItem title="Setting" icon={faSliders} {switchPages} />
   <SideMenuItem title="Security" icon={faFingerprint} {switchPages} />

@@ -47,10 +47,11 @@
           id="email"
           bind:value={userData.email}
         />
+        {#if errMessages.email}
+          <div class="text-danger">{errMessages.email}</div>
+        {/if}
       </div>
-      {#if errMessages.email}
-        <div class="text-danger">{errMessages.email}</div>
-      {/if}
+
       <div class="form-group mt-3">
         <label for="password" class="cl-primary">Password</label>
         <input
@@ -62,10 +63,11 @@
           id="password"
           bind:value={userData.password}
         />
+        {#if errMessages.password}
+          <div class="text-danger">{errMessages.password}</div>
+        {/if}
       </div>
-      {#if errMessages.password}
-        <div class="text-danger">{errMessages.password}</div>
-      {/if}
+
       <div class="form-group mt-3">
         <label for="password2" class="cl-primary">Confirm Password</label>
         <input
@@ -77,10 +79,11 @@
           id="password2"
           bind:value={userData.password2}
         />
+        {#if errMessages.password2}
+          <div class="text-danger">{errMessages.password2}</div>
+        {/if}
       </div>
-      {#if errMessages.password2}
-        <div class="text-danger">{errMessages.password2}</div>
-      {/if}
+
       <button type="submit" class="btn-main mt-4 full-width"
         >Create Account</button
       >

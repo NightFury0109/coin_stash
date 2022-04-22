@@ -94,7 +94,7 @@ button:focus {
 }
 
 .cl-primary {
-	color: #a758a0;
+	color: #a758a0 !important;
 }
 
 .cl-dark-blue {
@@ -172,4 +172,8 @@ button:focus {
 .primary-input:focus {
 	border: 1px solid #b471ae !important;
 	box-shadow: none !important;
+}
+
+*:focus {
+	outline: none;
 }
