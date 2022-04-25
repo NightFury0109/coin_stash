@@ -65,7 +65,7 @@
 		padding: 0;
 		margin: 0 auto;
 		min-height: 100vh;
-		background-image: url("./image/dashboard_bg.png");
+		background-image: url("../vendor/image/dashboard_bg.png");
 		background-position: right;
 		background-repeat: no-repeat;
 		background-size: cover;
