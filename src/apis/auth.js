@@ -71,6 +71,30 @@ export const login = async userData => {
   }
 };
 
+// Update User Info
+export const updateUserInfo = async userData => {
+  try {
+    const res = await api.put('/user', JSON.stringify(userData));
+    console.log(res)
+    if (res.result === 0) {
+      errors.set({});
+    } else {
+      // if (res.result === 41 && (res.error_code === 15 || res.error_code === 14)) {
+      //   errors.set({
+      //     email: res.error_text
+      //   })
+      // }
+      // if (res.result === 41 && res.error_code === 13) {
+      //   errors.set({
+      //     password: res.error_text
+      //   })
+      // }
+    }
+  } catch (error) {
+    console.log(error)
+  }
+};
+
 // Logout
 export const logout = async () => {
   try {

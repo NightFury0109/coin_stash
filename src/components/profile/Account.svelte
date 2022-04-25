@@ -3,6 +3,7 @@
 
   import { userInfo, errors } from "../../store";
   import userInfoValidation from "../../utils/validation/userInfoValidation";
+  import { updateUserInfo } from "../../apis/auth";
 
   let userData = {
     email: "",
@@ -20,7 +21,7 @@
     userData.lastName = value.surname;
     userData.known_as = value.known_as;
 
-    if (value.local_cur_id !== 0) userData.id_num = value.local_cur_id;
+    if (value.id_num !== 0) userData.id_num = value.id_num;
 
     userData.address = value.address;
     userData.mobile = value.mobile;
@@ -30,6 +31,7 @@
     const { errorMsgs, isValid } = await userInfoValidation(userData);
 
     if (!isValid) errors.set(errorMsgs);
+    else await updateUserInfo(userData);
   };
 </script>
 
