@@ -1,8 +1,10 @@
-import openSocket from 'socket.io-client';
+// import openSocket from 'socket.io-client';
+import WebSocket from 'ws';
 
 const StartWebSocket = () => {
   console.log("WS starting");
-  const ws = openSocket('wss://api.coinstash.co.za:8080/', { secure: true });
+  // const ws = openSocket('wss://api.coinstash.co.za:8080/', { secure: true });
+  const ws = WebSocket('wss://api.coinstash.co.za:8080/');
 
   ws.on('open', () => {
     /* you can now start working with the connection */
@@ -11,7 +13,7 @@ const StartWebSocket = () => {
     setTimeout(() => {
       ws.send(JSON.stringify({
         t: 'auth',
-        token: '2612723ed3e5824e5959cd2e10c80220'
+        token: localStorage.token
       }));
       console.log('Sending auth');
     }, 1000);
