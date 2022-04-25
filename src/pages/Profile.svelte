@@ -3,6 +3,7 @@
   import { navigate } from "svelte-navigator";
 
   import { profilePage } from "../store";
+  import { getUserData } from "../apis/auth";
 
   import SideMenu from "../components/profile/SideMenu.svelte";
   import Account from "../components/profile/Account.svelte";
@@ -10,9 +11,10 @@
   import Setting from "../components/profile/Setting.svelte";
   import Security from "../components/profile/Security.svelte";
 
-  onMount(() => {
-    navigate("#account");
+  onMount(async () => {
+    await getUserData();
     profilePage.set("Account");
+    navigate("#account");
   });
 </script>
 

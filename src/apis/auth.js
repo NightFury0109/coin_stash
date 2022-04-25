@@ -9,6 +9,7 @@ export const getUserData = async () => {
     const res = await api.get('/user');
 
     if (res.result === 0) {
+      console.log(res);
       userInfo.set(res.data);
     } else {
       console.log(res);
@@ -21,7 +22,7 @@ export const getUserData = async () => {
 // Register User
 export const createAccount = async newUser => {
   try {
-    const res = await api.post('/user', newUser);
+    const res = await api.post('/user', JSON.stringify(newUser));
 
     if (res.result === 0) {
       errors.set({});
@@ -46,7 +47,7 @@ export const createAccount = async newUser => {
 // Login User
 export const login = async userData => {
   try {
-    const res = await api.post('/session', userData);
+    const res = await api.post('/session', JSON.stringify(userData));
     // console.log(res)
     if (res.result === 0) {
       errors.set({});

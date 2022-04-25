@@ -10,5 +10,12 @@ export const errors = writable({});
 // Router
 export const profilePage = writable("Account");
 // Currency
-export const cursList = writable({});
-export const curTypes = writable({});
+export const cursList = writable([]);
+export const curTypes = writable([]);
+export const balances = writable([]);
+export const pendTrans = writable([]);
+export const loan = writable({});
+// Loading
+export const isBalanceLoading = writable(true);
+export const isPendTransLoading = writable(true);
+export const isLoanLoading = writable(true);

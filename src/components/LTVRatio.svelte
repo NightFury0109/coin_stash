@@ -2,11 +2,12 @@
   import ApexCharts from "apexcharts";
 
   import { onMount } from "svelte";
-  // import Gauge from "gaugeJS";
+
+  export let series;
 
   onMount(() => {
     var options = {
-      series: [50],
+      series: [series],
       // colors: ["#ff1a1a"],
       chart: {
         height: 320,
@@ -68,5 +69,5 @@
 
 <div id="chart" />
 
-<style>
+<style lang="scss">
 </style>

@@ -4,13 +4,13 @@ import isEmpty from './is-empty';
 const userInfoValidation = (data) => {
   let errorMsgs = {};
 
-  data.email = !isEmpty(data.email) ? data.email : '';
-  data.firstName = !isEmpty(data.firstName) ? data.firstName : '';
-  data.lastName = !isEmpty(data.lastName) ? data.lastName : '';
-  data.known_as = !isEmpty(data.known_as) ? data.known_as : '';
-  data.id_num = !isEmpty(data.id_num) ? data.id_num : '';
-  data.address = !isEmpty(data.address) ? data.address : '';
-  data.mobile = !isEmpty(data.mobile) ? data.mobile : '';
+  data.email = !isEmpty(data.email) ? data.email.toString() : '';
+  data.firstName = !isEmpty(data.firstName) ? data.firstName.toString() : '';
+  data.lastName = !isEmpty(data.lastName) ? data.lastName.toString() : '';
+  data.known_as = !isEmpty(data.known_as) ? data.known_as.toString() : '';
+  data.id_num = !isEmpty(data.id_num) ? data.id_num.toString() : '';
+  data.address = !isEmpty(data.address) ? data.address.toString() : '';
+  data.mobile = !isEmpty(data.mobile) ? data.mobile.toString() : '';
 
   if (Validator.isEmpty(data.email)) {
     errorMsgs.email = 'required';

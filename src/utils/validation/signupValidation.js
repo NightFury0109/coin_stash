@@ -4,9 +4,9 @@ import isEmpty from './is-empty';
 const signupValidation = (data) => {
   let errorMsgs = {};
 
-  data.email = !isEmpty(data.email) ? data.email : '';
-  data.password = !isEmpty(data.password) ? data.password : '';
-  data.password2 = !isEmpty(data.password2) ? data.password2 : '';
+  data.email = !isEmpty(data.email) ? data.email.toString() : '';
+  data.password = !isEmpty(data.password) ? data.password.toString() : '';
+  data.password2 = !isEmpty(data.password2) ? data.password2.toString() : '';
 
   if (Validator.isEmpty(data.email)) {
     errorMsgs.email = 'required';

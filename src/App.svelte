@@ -5,7 +5,7 @@
 
 	import { isAuth } from "./store";
 	import { logout, getUserData } from "./apis/auth";
-	import { getCursList, getCurTypes } from "./apis/finance";
+	import StartWebSocket from "./socket";
 
 	import PrivateRoute from "./components/privateRoute/PrivateRoute.svelte";
 
@@ -19,9 +19,7 @@
 	export let url = "";
 
 	onMount(async () => {
-		await getCursList();
-		await getCurTypes();
-
+		await StartWebSocket();
 		if (localStorage.token) {
 			isAuth.set(true);
 			await getUserData();
