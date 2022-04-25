@@ -24,10 +24,10 @@
     getLoan,
   } from "../apis/finance";
 
-  import WalletItem from "../components/dashboard/WalletItem.svelte";
-  import TransactionItem from "../components/dashboard/TransactionItem.svelte";
+  import WalletItem from "../components/Dashboard/WalletItem.svelte";
+  import TransactionItem from "../components/Dashboard/TransactionItem.svelte";
   import DashboardSpinner from "../components/loading/DashboardSpinner.svelte";
-  import Loans from "../components/dashboard/Loans.svelte";
+  import Loans from "../components/Dashboard/Loans.svelte";
 
   let hideZeroBal = false;
 
